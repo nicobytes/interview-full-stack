@@ -1,0 +1,33 @@
+name: WebApp Deployment
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'apps/webapp/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+      - name: Install Dependencies
+        working-directory: ./apps/webapp
+        run: npm ci
+      - name: Build
+        working-directory: ./apps/webapp
+        run: npm run build
+      - name: Deploy Page
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "3.50.0"
+          workingDirectory: ./apps/webapp
+          command: pages deploy

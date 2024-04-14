@@ -1,0 +1,6 @@
+name = "interviews-webapp"
+compatibility_date = "2024-04-03"
+pages_build_output_dir = "./dist/webapp/browser"
+
+[env.production]
+compatibility_date = "2024-04-03"
