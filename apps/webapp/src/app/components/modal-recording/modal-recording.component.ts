@@ -52,7 +52,7 @@ export class ModalRecordingComponent implements AfterViewInit {
       mimeType: 'video/webm',
     });
     this.mediaRecorder.ondataavailable = (event) => {
-      const blob = new Blob([event.data], { type: 'video/webm' });
+      const blob = new Blob([event.data], { type: 'audio/webm' });
       const url = URL.createObjectURL(blob);
       this.status.set('success');
       this.blob.set(blob);
