@@ -1,0 +1,29 @@
+<div class="mx-auto max-w-screen-lg p-4 md:h-screen md:p-10">
+<div class="max-w-screen-lg h-full flex flex-col space-y-8 md:space-y-0">
+  <header class="w-full flex">
+    <div class="flex">
+      <a routerLink="/" class="flex items-center space-x-4">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">
+          frame_person_mic
+        </mat-icon>
+        <span class="font-bold">My Interview Simulator</span>
+      </a>
+    </div>
+  </header>
+  <div class="w-full flex flex-col space-y-4 items-center grow md:flex-row md:space-x-4 md:space-y-0">
+    <!--Left Col-->
+    <div class="flex flex-col w-full overflow-y-hidden lg:w-1/2 lg:items-start">
+      <h1 class="text-4xl mb-10 font-extrabold">
+        Main Hero Message to sell your app</h1>
+      <p class="leading-normal text-base md:text-2xl mb-8 text-left slide-in-bottom-subtitle">Sub-hero
+        message, not too long and not too short. Make it just right!</p>
+      <button routerLink="/create" class="btn btn-primary btn-large" type="button">Get Started</button>
+    </div>
+
+    <!--Left Col-->
+    <div class="flex lg:w-1/2 justify-center">
+      <img width="254" height="221" ngSrc="https://storage.googleapis.com/yoodli-public/landing-page-assets/job-interview.png" alt="">
+    </div>
+  </div>
+  </div>
+</div>

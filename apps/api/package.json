@@ -1,13 +1,23 @@
 {
   "scripts": {
     "dev": "wrangler dev src/index.ts",
-    "deploy": "wrangler deploy --minify src/index.ts"
+    "dev:remote": "wrangler dev src/index.ts --remote",
+    "migrations:generate": "drizzle-kit generate:sqlite",
+    "migrations:list": "wrangler d1 migrations list interviews_db --local",
+    "migrations:apply": "wrangler d1 migrations apply interviews_db --local",
+    "migrations:apply:prod": "wrangler d1 migrations apply interviews_db --remote"
   },
   "dependencies": {
-    "hono": "4.2.4"
+    "@hono/swagger-ui": "^0.2.1",
+    "@hono/zod-openapi": "^0.11.0",
+    "@langchain/cloudflare": "^0.0.4",
+    "drizzle-orm": "^0.30.8",
+    "hono": "4.2.4",
+    "langchain": "^0.1.33"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "4.20240405.0",
+    "drizzle-kit": "^0.20.14",
     "wrangler": "3.50.0"
   }
 }

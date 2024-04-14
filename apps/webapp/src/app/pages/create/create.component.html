@@ -1,0 +1,30 @@
+<div class="mx-auto max-w-screen-lg p-4 md:h-screen md:p-10">
+  <div class="mx-auto max-w-screen-lg h-full flex flex-col mt-10">
+    <article class="prose">
+      <h1>Personalize your interview</h1>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex flex-col space-y-1">
+        <label class="form-control w-full max-w-xs">
+          <div class="label">
+            <span class="label-text">What is your name?</span>
+          </div>
+          <input formControlName="name" type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" [class.input-error]="form.get('name')?.hasError && form.get('name')?.touched" />
+          <div class="label" [class.opacity-0]="form.get('name')?.hasError && !form.get('name')?.touched">
+            <span class="label-text-alt">This field is requeried</span>
+          </div>
+        </label>
+        <label class="form-control w-full max-w-xs">
+          <div class="label">
+            <span class="label-text">What is your role?</span>
+          </div>
+          <input formControlName="role" type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" [class.input-error]="form.get('role')?.hasError && form.get('role')?.touched" />
+          <div class="label" [class.opacity-0]="form.get('role')?.hasError && !form.get('role')?.touched">
+            <span class="label-text-alt">This field is requeried</span>
+          </div>
+        </label>
+        <div class="w-full max-w-xs">
+          <button class="btn btn-primary btn-large" type="submit">Start the interview</button>
+        </div>
+      </form>
+    </article>
+  </div>
+</div>

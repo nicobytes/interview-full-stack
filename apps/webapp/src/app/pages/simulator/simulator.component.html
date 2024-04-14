@@ -1,0 +1,48 @@
+<div class="h-screen w-screen flex flex-col">
+  <div class="flex mx-auto max-w-screen-lg h-full w-full overflow-y-auto overflow-x-hidden">
+    <div class="flex flex-col w-full">
+
+      @for(msg of messages(); track msg.id) {
+
+      <div class="chat" [class.chat-start]="msg.from === 'user'" [class.chat-end]="msg.from === 'bot'">
+        <div class="chat-header">
+          @if(msg.from === 'bot') {
+          Interviewer
+          } @else {
+          You
+          }
+        </div>
+        <div class="chat-bubble">
+
+          @if(msg.from === 'bot' && msg.type === 'feedback') {
+          <span class="badge badge-primary absolute top-0 left-0">feedback</span>
+          }
+          <article class="prose prose-sm prose-p:text-white prose-ol:text-white">
+            <markdown ngPreserveWhitespaces>
+              {{ msg.text }}
+            </markdown>
+          </article>
+        </div>
+      </div>
+
+      }
+
+    </div>
+  </div>
+  <div class="w-full bg-primary-content p-2">
+    <div class="flex space-x-2 justify-center">
+      @switch (mode()) {
+      @case ('recording') {
+      <button (click)="openModalRecording()" type="button" class="btn btn-primary btn-large">Record response</button>
+      }
+      @case ('question') {
+      <button (click)="createQuestion(answer())" type="button" class="btn btn-primary btn-large">Next
+        Question</button>}
+      @case ('loading') {
+      <span class="loading loading-spinner loading-lg"></span>
+      }
+      }
+
+    </div>
+  </div>
+</div>
