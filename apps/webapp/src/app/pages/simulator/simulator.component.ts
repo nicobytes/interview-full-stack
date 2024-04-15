@@ -63,7 +63,7 @@ export default class SimulatorComponent implements OnInit {
     });
   }
 
-  createTranscript(file: File, question: string) {
+  createTranscript(file: Blob, question: string) {
     this.mode.set('loading');
     this.apiService.createTranscript(file).subscribe({
       next: (newMessage) => {

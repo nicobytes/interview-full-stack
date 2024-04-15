@@ -1,6 +1,6 @@
 import { OpenAPIHono, createRoute } from "@hono/zod-openapi";
 import { MessageSchema } from '@src/dtos/message.dto';
-import { generateTranscription } from '@src/services/whisper.service';
+import { generateTranscription } from '@src/services/openai.service';
 import { App } from "@src/types";
 
 const app = new OpenAPIHono<App>();
@@ -23,9 +23,9 @@ const route = createRoute({
 });
 
 app.openapi(route, async (c) => {
-  const body = await c.req.parseBody();
-  const file = body.file as File;
-  const answer = await generateTranscription(file, c.env.AI);
+  const data = await c.req.formData();
+  const file = data.get('file') as unknown as File;
+  const answer = await generateTranscription(file, c.env.OPENAI_API_KEY, c.env.CLOUDFLARE_AI_GATEWAY_URL);
 
   return c.json({
     id: `${Date.now()}`,

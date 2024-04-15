@@ -31,7 +31,7 @@ export class ModalRecordingComponent implements AfterViewInit {
   @ViewChild('videoRta', { static: false }) videoRta!: ElementRef<HTMLVideoElement>;
   private mediaRecorder!: MediaRecorder;
   status = signal<'init' | 'recording' | 'success' | 'processing' | 'streaming'>('init');
-  file = signal<File | null>(null);
+  file = signal<Blob | null>(null);
   intervalId = signal<number | null>(null);
   duration = signal<number>(0);
   formatDuration = computed(() => {
@@ -77,11 +77,9 @@ export class ModalRecordingComponent implements AfterViewInit {
   previewVideo() {
     const chunks = this.recordedChunks();
     const blob = new Blob(chunks, { type: 'video/webm' });
-    const filename = `${Date.now()}.webm`;
-    const file = new File([blob], filename, { type: blob.type, lastModified: Date.now() });
-    const url = URL.createObjectURL(file);
+    const url = URL.createObjectURL(blob);
     this.status.set('success');
-    this.file.set(file);
+    this.file.set(blob);
     this.videoRta.nativeElement.src = url;
     this.cdRef.detectChanges();
   }

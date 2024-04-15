@@ -14,6 +14,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/simulator/simulator.component')
   },
   {
+    path: 'demo',
+    loadComponent: () => import('./pages/demo/demo.component')
+  },
+  {
     path: '**',
     redirectTo: ''
   }

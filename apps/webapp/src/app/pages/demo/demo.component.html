@@ -1,0 +1,16 @@
+<div class="p-10">
+  <p>
+    <button class="btn btn-large btn-primary" type="button" (click)="startRecording()">start</button>
+  </p>
+  <p>
+    <button class="btn btn-large"  type="button" (click)="stopRecording()">stop</button>
+  </p>
+  @if(url()) {
+    <p>
+      <video controls>
+        <source [src]="url()" type="video/webm">
+      </video>
+    </p>
+  }
+
+</div>

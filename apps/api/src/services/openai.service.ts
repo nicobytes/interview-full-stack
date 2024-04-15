@@ -1,9 +1,7 @@
 import OpenAI from "openai";
 
-export const generateTranscription = async (file: File, key: string) => {
-  const openai = new OpenAI({
-    apiKey: key,
-  });
+export const generateTranscription = async (file: File, apiKey: string, baseURL: string) => {
+  const openai = new OpenAI({ apiKey, baseURL: `${baseURL}/openai`});
   console.log('name', file.name);
   console.log('type', file.type);
   const transcription = await openai.audio.transcriptions.create({
@@ -14,10 +12,8 @@ export const generateTranscription = async (file: File, key: string) => {
   return transcription.text;
 }
 
-export const generateAudio = async (input: string, key: string, bucket: R2Bucket) => {
-  const openai = new OpenAI({
-    apiKey: key,
-  });
+export const generateAudio = async (input: string, apiKey: string, baseURL: string, bucket: R2Bucket) => {
+  const openai = new OpenAI({ apiKey, baseURL: `${baseURL}/openai`});
   const file = await openai.audio.speech.create({
     model: "tts-1",
     voice: "alloy",

@@ -45,7 +45,7 @@ app.openapi(route, async (c) => {
     cloudflareApiToken: c.env.CLOUDFLARE_API_TOKEN,
   }, c.env.DB);
 
-  const filename = await generateAudio(response, c.env.OPENAI_API_KEY, c.env.BUCKET);
+  const filename = await generateAudio(response, c.env.OPENAI_API_KEY, c.env.CLOUDFLARE_AI_GATEWAY_URL, c.env.BUCKET);
 
   return c.json({
     id: `${Date.now()}`,

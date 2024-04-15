@@ -30,9 +30,10 @@ export class ApiService {
     });
   }
 
-  createTranscript(file: File) {
+  createTranscript(file: Blob) {
     const formData = new FormData();
-    formData.append('file', file);
+    const filename = `file-${Date.now()}.webm`;
+    formData.append('file', file, filename);
     return this.http.post<Message>(`${environment.apiUrl}/transcript`, formData)
     .pipe(
       map((response) => ({
