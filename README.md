@@ -160,7 +160,7 @@ The frontend app is organized in the following folder structure:
 
 ## 🚀 Deployment
 
-This project was structured as a monorepo, with the frontend and backend in the same repository, and with Github actions to detect changes in the code and deploy the app to the cloud. As part of CI/CD, the project has a linter and build step before deploying the app. The project has automatic deployment to Heroku for the API, the frontend in Cloudflare pages.
+This project was structured as a monorepo, with the frontend and backend in the same repository, and with Github actions to detect changes in the code and deploy the app to the cloud. As part of CI/CD, the project has a linter and build step before deploying the app. The project has automatic deployment to Cloudflare Workers for the API, the frontend in Cloudflare pages.
 
-![capture](/images/weather_deployment.jpg)
+![capture](/images/weather_ci.jpg)
 
