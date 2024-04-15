@@ -58,8 +58,6 @@ export default class SimulatorComponent implements OnInit {
         this.mode.set('question');
       },
       error: () => {
-        const messageError = 'Ups, something went wrong with the transcription. Please try again.';
-        this.toastr.error(messageError, 'Error!');
         this.mode.set('recording');
       },
     });
@@ -74,8 +72,9 @@ export default class SimulatorComponent implements OnInit {
         this.answer.set(newMessage.text);
         this.createFeedback(question, newMessage.text);
       },
-      error: (error) => {
-        console.error(error);
+      error: () => {
+        const messageError = 'Ups, something went wrong with the transcription. Please try again.';
+        this.toastr.error(messageError, 'Error!');
         this.mode.set('recording');
       },
     });
