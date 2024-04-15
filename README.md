@@ -6,8 +6,6 @@
 
 ## 🚀 Services
 
-![capture](/images/services.png)
-
 - Backend: https://interview-api.nicobytes.com/
 - Frontend: https://interview.nicobytes.com/
 
