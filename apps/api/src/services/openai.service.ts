@@ -13,7 +13,7 @@ export const generateTranscription = async (file: File, apiKey: string, baseURL:
 }
 
 export const generateAudio = async (input: string, apiKey: string, baseURL: string, bucket: R2Bucket) => {
-  const openai = new OpenAI({ apiKey, baseURL: `${baseURL}/openai`});
+  const openai = new OpenAI({ apiKey });
   const file = await openai.audio.speech.create({
     model: "tts-1",
     voice: "alloy",
