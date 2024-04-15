@@ -2,7 +2,7 @@
 
 # AI Interview Simulator
 
-**AI Interview Simulator** is a web application that helps you prepare for your next job interview. It uses AI to analyze your answers and provide feedback on how to improve using the camera and microphone on your device.
+AI Interview Simulator is an web application designed to improve your interview preparation. Using AI technology, it analyzes your answers and provides constructive feedback on how to improve. Using your device's camera and microphone, this tool provides a comprehensive, real-time assessment to help you excel in your next interview.
 
 ## 🚀 Services
 
@@ -17,12 +17,16 @@
   - Headless component primitives: [Angular CDK](https://material.angular.io)
 - Backend: 
   - API: [HonoJS](https://honojs.com/)
+  - LangChainJS: [LangChainJS](https://langchainjs.com/)
 - Infrastructure:
   - Cloudflare Pages
   - Clodflare Workers
-  - Workers AI
+  - Workers AI Models
+    - @cf/openai/whisper
+    - @cf/meta/llama-2-7b-chat-fp16
+    - openai-tts
   - Storage: R2
-  - Database: D1
+  - Database: D1 to chat memory
 
 ## 🚀 Quickstart
 
@@ -155,4 +159,8 @@ The frontend app is organized in the following folder structure:
 This project was structured as a monorepo, with the frontend and backend in the same repository, and with Github actions to detect changes in the code and deploy the app to the cloud. As part of CI/CD, the project has a linter and build step before deploying the app. The project has automatic deployment to Cloudflare Workers for the API, the frontend in Cloudflare pages.
 
 ![capture](/images/weather_ci.jpg)
+
+
+
+
 
