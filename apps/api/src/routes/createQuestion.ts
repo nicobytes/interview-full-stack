@@ -8,7 +8,7 @@ import { App } from "@src/types";
 const app = new OpenAPIHono<App>();
 
 const route = createRoute({
-  tags: ['questions'],
+  tags: ['simulation'],
   method: 'post',
   path: '/',
   request: {

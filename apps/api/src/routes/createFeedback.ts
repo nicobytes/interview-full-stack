@@ -5,7 +5,6 @@ import { generateFeedback } from '@src/services/llm.service';
 import { App } from "@src/types";
 import { HTTPException } from "hono/http-exception";
 import { getSimulationById } from '@src/services/simulation.service';
-import { generateAudio } from '@src/services/openai.service';
 
 const app = new OpenAPIHono<App>();
 
