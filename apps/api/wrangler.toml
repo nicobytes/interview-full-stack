@@ -9,3 +9,8 @@ database_id = "ca1cba03-9281-4bab-ac79-0ae16b39b88a"
 
 [ai]
 binding = "AI"
+
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "files"
+preview_bucket_name = "preview-files"

@@ -2,7 +2,8 @@ import { Ai } from '@cloudflare/ai';
 import { HTTPException } from 'hono/http-exception';
 
 export const generateTranscription = async (file: File, binding: any) => {
-
+  console.log('name', file.name);
+  console.log('type', file.type);
   const blob = await file.arrayBuffer();
   const input = {
     audio: [...new Uint8Array(blob)],
@@ -18,3 +19,4 @@ export const generateTranscription = async (file: File, binding: any) => {
 
   return response.text;
 }
+

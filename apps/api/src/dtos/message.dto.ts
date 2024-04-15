@@ -26,6 +26,7 @@ export const MessageSchema = z
     type: z.string().openapi({
       example: 'feedback',
     }),
+    file: z.any().optional()
   })
   .openapi('Message');
 

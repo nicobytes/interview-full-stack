@@ -1,15 +1,19 @@
 import { z } from '@hono/zod-openapi';
 
-export const FeedbackSchema = z
-  .object({
-    id: z.string().openapi({
+export const GenerateFeedbackSchema = z.object({
+  answer: z
+    .string()
+    .min(3)
+    .openapi({
+      example: 'Message',
+    }),
+  question: z
+    .string()
+    .min(3)
+    .openapi({
+      example: 'Message',
+    }),
+  simulationId: z.string().openapi({
       example: '1',
     }),
-    from: z.string().openapi({
-      example: 'user',
-    }),
-    text: z.string().openapi({
-      example: 'message',
-    }),
-  })
-  .openapi('Feedback');
+});

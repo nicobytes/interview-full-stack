@@ -2,6 +2,7 @@ import { OpenAPIHono, createRoute } from "@hono/zod-openapi";
 import { MessageSchema, NewMessageSchema } from '@src/dtos/message.dto';
 import { getSimulationById } from '@src/services/simulation.service';
 import { generateQuestion } from '@src/services/llm.service';
+import { generateAudio } from '@src/services/openai.service';
 import { App } from "@src/types";
 
 const app = new OpenAPIHono<App>();
@@ -44,11 +45,14 @@ app.openapi(route, async (c) => {
     cloudflareApiToken: c.env.CLOUDFLARE_API_TOKEN,
   }, c.env.DB);
 
+  const filename = await generateAudio(response, c.env.OPENAI_API_KEY, c.env.BUCKET);
+
   return c.json({
     id: `${Date.now()}`,
     from: 'bot',
     text: response,
     type: 'response',
+    audio: `${c.env.R2_URL}/${filename}`,
   });
 });
 

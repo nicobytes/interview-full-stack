@@ -8,6 +8,7 @@ import { dbMiddleware } from '@src/middlewares/db.middleware';
 import createSimulation from '@src/routes/createSimulation';
 import createQuestion from '@src/routes/createQuestion';
 import createFeedback from '@src/routes/createFeedback';
+import createTranscript from '@src/routes/createTranscript';
 
 const app = new OpenAPIHono();
 app.use("*", cors());
@@ -19,6 +20,7 @@ app.use('/api/v1/*', dbMiddleware);
 app.route('/api/v1/simulations', createSimulation);
 app.route('/api/v1/questions', createQuestion);
 app.route('/api/v1/feedback', createFeedback);
+app.route('/api/v1/transcript', createTranscript);
 
 app.get("/", swaggerUI({ url: "/docs" }));
 app.doc("/docs", {

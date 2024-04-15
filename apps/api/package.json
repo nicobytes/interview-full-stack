@@ -8,12 +8,14 @@
     "migrations:apply:prod": "wrangler d1 migrations apply interviews_db --remote"
   },
   "dependencies": {
+    "@cloudflare/ai": "1.1.0",
     "@hono/swagger-ui": "^0.2.1",
     "@hono/zod-openapi": "^0.11.0",
     "@langchain/cloudflare": "^0.0.4",
     "drizzle-orm": "^0.30.8",
     "hono": "4.2.4",
-    "langchain": "^0.1.33"
+    "langchain": "^0.1.33",
+    "openai": "^4.33.1"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "4.20240405.0",

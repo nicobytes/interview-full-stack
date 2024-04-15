@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ApiService } from '@services/api.service';
@@ -14,6 +14,7 @@ export default  class CreateComponent {
   formBuilder = inject(FormBuilder);
   apiService = inject(ApiService);
   router = inject(Router);
+  status = signal<'init' | 'loading' | 'success'>('init');
 
   form = this.formBuilder.nonNullable.group({
     name: ['', [Validators.required]],
@@ -30,8 +31,10 @@ export default  class CreateComponent {
   }
 
   createSession(data: { role: string, name: string }) {
+    this.status.set('loading');
     this.apiService.createSimulation(data).subscribe((response) => {
       this.router.navigate([`/simulator/${response.id}`]);
+      this.status.set('success');
     });
   }
 

@@ -1,5 +1,5 @@
 <div class="h-screen w-screen flex flex-col">
-  <div class="flex mx-auto max-w-screen-lg h-full w-full overflow-y-auto overflow-x-hidden">
+  <div #scroll class="flex mx-auto max-w-screen-lg h-full w-full overflow-y-auto overflow-x-hidden py-5 scroll-smooth">
     <div class="flex flex-col w-full">
 
       @for(msg of messages(); track msg.id) {
@@ -13,11 +13,15 @@
           }
         </div>
         <div class="chat-bubble">
-
           @if(msg.from === 'bot' && msg.type === 'feedback') {
           <span class="badge badge-primary absolute top-0 left-0">feedback</span>
           }
-          <article class="prose prose-sm prose-p:text-white prose-ol:text-white">
+          <article class="prose prose-sm prose-p:text-white prose-ol:text-white prose-ul:text-white">
+            @if(msg.file) {
+              <video class="w-full bg-white rounded-lg border-4 md:w-1/2 aspect-video" [autoplay]="false" [controls]="true">
+                <source src="{{ msg.file }}" type="video/webm" />
+              </video>
+            }
             <markdown ngPreserveWhitespaces>
               {{ msg.text }}
             </markdown>
@@ -29,11 +33,13 @@
 
     </div>
   </div>
-  <div class="w-full bg-primary-content p-2">
-    <div class="flex space-x-2 justify-center">
+  <div class="w-full bg-primary-content p-2 md:p-6">
+    <div class="flex justify-between  mx-auto max-w-screen-lg">
+
+      <a routerLink="/" class="btn btn-large btn-ghost">Finish</a>
       @switch (mode()) {
       @case ('recording') {
-      <button (click)="openModalRecording()" type="button" class="btn btn-primary btn-large">Record response</button>
+        <button (click)="openModalRecording()" type="button" class="btn btn-primary btn-large">Record response</button>
       }
       @case ('question') {
       <button (click)="createQuestion(answer())" type="button" class="btn btn-primary btn-large">Next

@@ -3,5 +3,6 @@ export interface Message {
   from: 'user' | 'bot';
   type: 'feedback' | 'response';
   text: string;
-  file?: Blob;
+  audio?: string;
+  file?: string;
 }
