@@ -98,12 +98,6 @@ The frontend is built with Angular, a platform and framework for building web ap
 
 ### Responsive design
 
-![capture](/images/weather_dark.jpg)
-
-### Search for a city
-
-The user can search for a city by typing the city name in the search bar, and autocomplete suggestions help the user select the desired city.
-
 ![capture](/images/interview.jpg)
 ![capture](/images/interview_desk.jpg)
 ![capture](/images/interview_chat.jpg)
