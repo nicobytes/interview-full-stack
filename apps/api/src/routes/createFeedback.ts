@@ -54,7 +54,7 @@ app.openapi(route, async (c) => {
   }
 
   return c.json({
-    id: `${Date.now() + 1}`,
+    id: `${Date.now()}`,
     from: 'bot',
     text: content,
     type: 'feedback'
